@@ -1,0 +1,8 @@
+streamlit
+openai
+langchain
+bs4
+tiktoken
+faiss-cpu
+unstructured
+unstructured[pdf]
