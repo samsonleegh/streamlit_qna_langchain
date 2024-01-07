@@ -77,7 +77,7 @@ def load_data():
     return db
 
 # File upload and save
-uploaded_file_ls = st.file_uploader('Upload an article', accept_multiple_files=True, type=['txt','pdf','csv','docx'])
+uploaded_file_ls = st.file_uploader('Upload an article', accept_multiple_files=True, type=['txt','pdf','csv','docx','xlsx'])
 # for uploaded_file in uploaded_file_ls:
 #     save_uploadedfile(uploaded_file)
 db_file_name_ls = os.listdir("data")    
