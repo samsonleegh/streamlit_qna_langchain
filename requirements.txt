@@ -6,4 +6,3 @@ faiss-cpu
 tiktoken
 unstructured
 unstructured[pdf]
-opencv-python-headless
