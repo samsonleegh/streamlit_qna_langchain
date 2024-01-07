@@ -6,3 +6,4 @@ faiss-cpu
 tiktoken
 unstructured
 unstructured[pdf]
+unstructured[docx]
