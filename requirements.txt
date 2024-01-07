@@ -7,3 +7,4 @@ tiktoken
 unstructured
 unstructured[pdf]
 unstructured[docx]
+unstructured[xlsx]
