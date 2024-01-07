@@ -29,6 +29,11 @@ st.header("Chat with LLM Agents 💬 📚")
 # This is needed for both the memory and the prompt
 memory_key = "history"
 
+if os.path.isdir("data"):
+    pass
+else:
+    os.mkdir("data")
+
 if 'db' not in st.session_state:
     st.session_state['db'] = None
 
