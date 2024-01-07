@@ -1,7 +1,6 @@
 import os
 import glob
 
-import key
 import streamlit as st
 
 # used to create the memory
@@ -24,17 +23,12 @@ from langchain.chat_models import ChatOpenAI
 from langchain.agents import AgentExecutor
 
 # add a heading for your app.
-st.header("Chat with the LLM Agents blog 💬 📚")
+st.header("Chat with LLM Agents 💬 📚")
 
-# Initialize the folder, memory and variables
+# Initialize the memory
 # This is needed for both the memory and the prompt
 memory_key = "history"
 
-if os.path.isdir("data"):
-    pass
-else:
-    os.mkdir("data")
-    
 if 'db' not in st.session_state:
     st.session_state['db'] = None
 
@@ -63,7 +57,7 @@ def save_uploadedfile(uploaded_file):
          f.write(uploaded_file.getbuffer())
      return st.success("Saved File:{}".format(uploaded_file.name))
 
-os.environ["OPENAI_API_KEY"] = "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" # key.APIKEY
+openai_api_key = st.secrets.openai_key
 
 # create the document database
 def load_data():
@@ -71,7 +65,7 @@ def load_data():
     data = loader.load()
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     texts = text_splitter.split_documents(data)
-    embeddings = OpenAIEmbeddings()
+    embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
     db = FAISS.from_documents(texts, embeddings)
 
     # [data_index.metadata['source'] for data_index in data]
@@ -121,7 +115,7 @@ if st.session_state['retriever'] is not None:
     tools = [tool]
 
     # instantiate the large language model
-    llm = ChatOpenAI(temperature = 0)
+    llm = ChatOpenAI(temperature = 0, openai_api_key=openai_api_key)
 
     # define the prompt
     system_message = SystemMessage(
