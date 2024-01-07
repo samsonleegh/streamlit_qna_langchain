@@ -57,7 +57,7 @@ def save_uploadedfile(uploaded_file):
          f.write(uploaded_file.getbuffer())
      return st.success("Saved File:{}".format(uploaded_file.name))
 
-openai_api_key = st.secrets.openai_key
+os.environ["OPENAI_API_KEY"] = st.secrets.openai_key
 
 # create the document database
 def load_data():
@@ -65,7 +65,7 @@ def load_data():
     data = loader.load()
     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     texts = text_splitter.split_documents(data)
-    embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
+    embeddings = OpenAIEmbeddings()
     db = FAISS.from_documents(texts, embeddings)
 
     # [data_index.metadata['source'] for data_index in data]
@@ -115,7 +115,7 @@ if st.session_state['retriever'] is not None:
     tools = [tool]
 
     # instantiate the large language model
-    llm = ChatOpenAI(temperature = 0, openai_api_key=openai_api_key)
+    llm = ChatOpenAI(temperature = 0)
 
     # define the prompt
     system_message = SystemMessage(
