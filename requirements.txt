@@ -1,8 +1,8 @@
 streamlit
-openai
 langchain
-bs4
-tiktoken
+openai
 faiss-cpu
+tiktoken
 unstructured
 unstructured[pdf]
+opencv-python-headless
