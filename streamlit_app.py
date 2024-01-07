@@ -26,10 +26,15 @@ from langchain.agents import AgentExecutor
 # add a heading for your app.
 st.header("Chat with the LLM Agents blog 💬 📚")
 
-# Initialize the memory
+# Initialize the folder, memory and variables
 # This is needed for both the memory and the prompt
 memory_key = "history"
 
+if os.path.isdir("data"):
+    pass
+else:
+    os.mkdir("data")
+    
 if 'db' not in st.session_state:
     st.session_state['db'] = None
 
