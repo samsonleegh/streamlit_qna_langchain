@@ -63,7 +63,7 @@ def save_uploadedfile(uploaded_file):
          f.write(uploaded_file.getbuffer())
      return st.success("Saved File:{}".format(uploaded_file.name))
 
-os.environ["OPENAI_API_KEY"] = "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" # key.APIKEY
+os.environ["OPENAI_API_KEY"] = "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" # key.APIKEY
 
 # create the document database
 def load_data():
