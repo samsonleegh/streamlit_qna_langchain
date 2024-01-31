@@ -120,7 +120,7 @@ if st.session_state['retriever'] is not None:
     tools = [tool]
 
     # instantiate the large language model
-    llm = ChatOpenAI(temperature = 0)
+    llm = ChatOpenAI(temperature = 0, model='gpt-4-1106-preview')
 
     # define the prompt
     system_message = SystemMessage(
