@@ -8,3 +8,4 @@ unstructured
 unstructured[pdf]
 unstructured[docx]
 unstructured[xlsx]
+pdf2image
